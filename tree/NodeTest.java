@@ -1,10 +1,12 @@
-import tree.TreeNode;
+package tree;
 
-public class TreeNodeTester {
-    public static void main(String args[]) {
+import tree.Node;
+
+public class NodeTest {
+    public static void main(String[] args) {
         int value = 1;
         int numChildren = 5;
-        TreeNode tree = new TreeNode(value, numChildren);
+        Node tree = new Node(value, numChildren);
         System.out.println("After constructing a new tree node, the children are:\n");
         for (int i = 0; i < tree.getHowManyChildren(); i++) {
             System.out.println(tree.getChild(i));
