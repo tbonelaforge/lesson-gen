@@ -30,6 +30,10 @@ public class Node {
         return howManyChildren;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     public String printAsHTML() {
         String template = "<table border=\"1\"><tr><td colspan=\"%d\"align=\"center\">%d</td></tr><tr>%s</tr></table>";
         String[] childHTMLs = this.printChildrenAsHTML();
