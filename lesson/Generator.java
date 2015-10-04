@@ -65,11 +65,16 @@ public class Generator {
     }
 
     private void printPaths(List<List<Integer>> paths) {
-        for (List<Integer> path : paths) {
-            System.out.print("[");
-            System.out.print(Generator.pathToString(path));
-            System.out.println("]");
+        System.out.println("[");
+        for (int i = 0; i < paths.size(); i++) {
+            List<Integer> path = paths.get(i);
+            System.out.print("    " + Generator.pathToString(path));
+            if (i < paths.size() - 1) {
+                System.out.print(",");
+            }
+            System.out.print("\n");
         }
+        System.out.println("]\n");
     }
     
     private boolean[] createInitialNumfield() {
@@ -100,10 +105,14 @@ public class Generator {
     }
 
     private static String pathToString(List<Integer> path) {
-        String joinedPath = path.stream()
-            .map(Object::toString)
-            .collect(Collectors.joining(", "));
-
+        String joinedPath = "[";
+        for (int i = 0; i < path.size(); i++) {
+            joinedPath += path.get(i).toString();
+            if ( i < path.size() - 1 ) {
+                joinedPath += ", ";
+            }
+        }
+        joinedPath += "]";
         return joinedPath;
     }
 
@@ -126,6 +135,24 @@ public class Generator {
         
         System.arraycopy(numfield, 0, numfieldCopy, 0, length);
         return numfieldCopy;
+    }
+
+    private static void printNumfieldHeader(boolean[] numfield) {
+        for (int i = 0; i < numfield.length; i++) {
+            System.out.print(i);
+            if (i < numfield.length - 1) {
+                System.out.print(", ");
+            }
+        }
+    }
+
+    private static void printNumfield(boolean[] numfield) {
+        for (int i = 0; i < numfield.length; i++) {
+            System.out.print(( numfield[i] ) ? "1" : "0");
+            if (i < numfield.length - 1) {
+                System.out.print(", ");
+            }
+        }
     }
 
 }
